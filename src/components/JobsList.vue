@@ -1,11 +1,14 @@
 <template>
   <div class="job-list">
     <p>Ordered by {{ order }}</p>
-    <ul>
+    <transition-group name="list" tag="ul">
       <li v-for="job in orderedJobs" :key="job.id">
         <h2>{{ job.title }} in {{ job.location }}</h2>
         <div class="salary">
-          <p>{{ job.salary }}</p>
+          <p>
+            <i class="fa-solid fa-rupee-sign"></i>
+            {{ job.salary }}
+          </p>
         </div>
         <div class="description">
           <p>
@@ -15,7 +18,7 @@
           </p>
         </div>
       </li>
-    </ul>
+    </transition-group>
   </div>
 </template>
 
@@ -78,9 +81,18 @@ export default defineComponent({
   width: 30px;
 }
 
+.salary i {
+  font-size: 20px;
+  margin-right: 8px;
+}
+
 .salary p {
   color: #17bf66;
   font-weight: bold;
   margin: 10px 4px;
+}
+
+.list-move {
+  transition: all 0.8s;
 }
 </style>

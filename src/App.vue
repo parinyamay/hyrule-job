@@ -1,6 +1,11 @@
 <template>
   <div class="app">
     <header>
+      <div class="title">
+        <i class="fa-regular fa-heart" style="margin-right: 16px"></i>
+        <h1>Hryule Jobs</h1>
+        <i class="fa-regular fa-heart" style="margin-left: 16px"></i>
+      </div>
       <div class="order">
         <button @click="handleClick('title')">order by title</button>
         <button @click="handleClick('salary')">order by salary</button>
@@ -44,9 +49,21 @@ export default defineComponent({
 header {
   text-align: center;
 }
+
 header .order {
   margin-top: 20px;
 }
+
+header .title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header .title i {
+  font-size: 48px;
+}
+
 button {
   margin: 0 10px;
   color: #1195c9;
