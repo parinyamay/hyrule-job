@@ -1,34 +1,18 @@
 <template>
   <div class="app">
-    <p>{{jobs[0].location}}</p>
+    <JobList :jobs="jobs"/>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, reactive, ref, toRefs } from 'vue'
+import JobList from './components/JobsList.vue'
 import Job from './types/Job'
 
 export default defineComponent({
   name: 'App',
-  components: {},
+  components: { JobList },
   setup() {
-    // Reactive style
-    //########################################################################
-    // const state = reactive({
-    //   name: 'Link',
-    //   age: 25 as string | number,
-    // })
-    // state.name = 999 // cannot change type
-    // state.age = false
-    // return { ...toRefs(state) }
-    //########################################################################
-    // Ref style
-    //########################################################################
-    // const name = ref('Link')
-    // const age = ref<number | string>(25)
-    // return { name, age }
-    //########################################################################
-
     const jobs = ref<Job[]>([
       { title: 'fram worker', location: 'lon lon ranch', salary: 30000, id: '1'},
       { title: 'quarryman', location: 'death mountain', salary: 40000, id: '2'},
