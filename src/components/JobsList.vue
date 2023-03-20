@@ -1,71 +1,80 @@
 <template>
-    <div class="job-list">
-        <ul>
-            <li v-for="job in jobs" :key="job.id">
-                <h2> {{ job.title }} in {{ job.location }} </h2>
-                <div class="salary">
-                    <p> {{ job.salary}} </p>
-                </div>
-                <div class="description">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo suscipit maxime totam, cumque molestias doloribus quas! Nobis quis impedit itaque dolores voluptatibus quibusdam sapiente beatae earum pariatur. Corrupti, quisquam consequatur.</p>
-                </div>
-            </li>
-        </ul>
-    </div>
+  <div class="job-list">
+    <p>Ordered by {{ order }}</p>
+    <ul>
+      <li v-for="job in jobs" :key="job.id">
+        <h2>{{ job.title }} in {{ job.location }}</h2>
+        <div class="salary">
+          <p>{{ job.salary }}</p>
+        </div>
+        <div class="description">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo suscipit maxime totam, cumque molestias
+            doloribus quas! Nobis quis impedit itaque dolores voluptatibus quibusdam sapiente beatae earum pariatur.
+            Corrupti, quisquam consequatur.
+          </p>
+        </div>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
 import Job from '@/types/Job'
+import OrderTerm from '@/types/OrderTerm'
 
 export default defineComponent({
-    props: {
-        jobs: {
-            required: true,
-            type: Array as PropType<Job[]>
-        }
+  props: {
+    jobs: {
+      required: true,
+      type: Array as PropType<Job[]>,
     },
-    // setup() {
-        
-    // },
+    order: {
+      required: true,
+      type: String as PropType<OrderTerm>,
+    },
+  },
+  // setup() {
+
+  // },
 })
 </script>
 
 <style scoped>
 .job-list {
-    max-width: 960px;
-    margin: 40px auto;
+  max-width: 960px;
+  margin: 40px auto;
 }
 
 .job-list ul {
-    padding: 0;
+  padding: 0;
 }
 
 .job-list li {
-    list-style-type: none;
-    background: white;
-    padding: 16px;
-    margin: 16px 0;
-    border-radius: 4px;
+  list-style-type: none;
+  background: white;
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 4px;
 }
 
 .job-list h2 {
-    margin: 0 0 10px;
-    text-transform: capitalize;
+  margin: 0 0 10px;
+  text-transform: capitalize;
 }
 
 .salary {
-    display: flex;
+  display: flex;
 }
 
 .salary img {
-    width: 30px;
+  width: 30px;
 }
 
 .salary p {
-    color: #17bf66;
-    font-weight: bold;
-    margin: 10px 4px;
+  color: #17bf66;
+  font-weight: bold;
+  margin: 10px 4px;
 }
-
 </style>
